@@ -36,7 +36,6 @@ public class Library {
         return stringOfAlbums.stream().reduce("", (tmp, a) -> tmp += a);
     }
 
-
     public void save() throws FileNotFoundException {
         File file = new File("library.txt");
         PrintWriter save = new PrintWriter("library.txt");
