@@ -1,5 +1,6 @@
 package school;
 
+import day_two.school.Student;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

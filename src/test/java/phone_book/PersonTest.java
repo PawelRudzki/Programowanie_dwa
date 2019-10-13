@@ -1,5 +1,7 @@
 package phone_book;
 
+import day_two.phone_book.Person;
+import day_two.phone_book.PhoneNumber;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

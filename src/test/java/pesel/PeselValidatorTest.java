@@ -1,5 +1,6 @@
 package pesel;
 
+import day_one.pesel.PeselValidator;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

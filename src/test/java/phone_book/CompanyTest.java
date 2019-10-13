@@ -1,6 +1,7 @@
 package phone_book;
 
-import lombok.AllArgsConstructor;
+import day_two.phone_book.Company;
+import day_two.phone_book.PhoneNumber;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

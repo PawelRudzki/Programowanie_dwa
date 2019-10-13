@@ -1,10 +1,11 @@
 package cd_library;
 
+import day_one.cd_library.Genre;
+import day_one.cd_library.Musician;
+import day_one.cd_library.Song;
 import org.junit.Test;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;

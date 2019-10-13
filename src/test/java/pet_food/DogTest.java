@@ -1,7 +1,8 @@
 package pet_food;
 
+import day_two.pet_food.FoodType;
 import org.junit.Test;
-import pet_food.pets.Dog;
+import day_two.pet_food.pets.Dog;
 
 import java.util.LinkedList;
 import java.util.List;

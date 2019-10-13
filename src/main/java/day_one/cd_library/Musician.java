@@ -9,6 +9,8 @@ public class Musician {
     String lastName;
 
     public String toString(){
-        return band +" "+name+" "+lastName;
+        return band
+                +" "+name
+                +" "+lastName;
     }
 }

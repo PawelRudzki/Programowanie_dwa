@@ -1,5 +1,6 @@
 package cd_library;
 
+import day_one.cd_library.*;
 import org.junit.Test;
 
 import java.util.*;
