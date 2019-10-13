@@ -1,4 +1,4 @@
-package school;
+package day_two.school;
 
 
 import lombok.Getter;

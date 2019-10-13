@@ -1,4 +1,4 @@
-package phone_book;
+package day_two.phone_book;
 
 import java.util.Map;
 import java.util.TreeMap;

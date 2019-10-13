@@ -1,4 +1,4 @@
-package cd_library;
+package day_one.cd_library;
 
 import lombok.Getter;
 import lombok.Setter;

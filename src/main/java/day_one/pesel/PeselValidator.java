@@ -1,4 +1,4 @@
-package pesel;
+package day_one.pesel;
 
 import java.lang.reflect.Array;
 

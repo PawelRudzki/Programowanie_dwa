@@ -1,18 +1,18 @@
-package pet_food.pets;
+package day_two.pet_food.pets;
 
-import pet_food.Food;
-import pet_food.FoodType;
-import pet_food.Pet;
+import day_two.pet_food.Food;
+import day_two.pet_food.FoodType;
+import day_two.pet_food.Pet;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Fish implements Pet {
-
+public class Dog implements Pet {
 
     private final List<FoodType> foodList = Arrays.asList(
-            FoodType.CORN,
-            FoodType.WHEY);
+            FoodType.PORK,
+            FoodType.PELLET,
+            FoodType.POTATOES);
 
     @Override
     public void doIntroduce() {
@@ -21,9 +21,7 @@ public class Fish implements Pet {
 
     @Override
     public void doTrick() {
-        System.out.println("Your fish does a trick.");
-
-
+        System.out.println("Your dog does a trick.");
     }
 
     @Override

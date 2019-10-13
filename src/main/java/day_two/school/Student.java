@@ -1,10 +1,10 @@
-package school;
+package day_two.school;
 
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pesel.PeselValidator;
+import day_one.pesel.PeselValidator;
 
 @Setter
 @Getter

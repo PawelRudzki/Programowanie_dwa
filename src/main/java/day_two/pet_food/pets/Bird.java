@@ -1,8 +1,8 @@
-package pet_food.pets;
+package day_two.pet_food.pets;
 
-import pet_food.Food;
-import pet_food.FoodType;
-import pet_food.Pet;
+import day_two.pet_food.Food;
+import day_two.pet_food.FoodType;
+import day_two.pet_food.Pet;
 
 import java.util.Arrays;
 import java.util.List;

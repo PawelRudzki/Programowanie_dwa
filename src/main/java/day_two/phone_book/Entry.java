@@ -1,4 +1,4 @@
-package phone_book;
+package day_two.phone_book;
 
 public abstract class Entry {
 

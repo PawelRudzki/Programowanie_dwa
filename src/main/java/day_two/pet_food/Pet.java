@@ -1,4 +1,4 @@
-package pet_food;
+package day_two.pet_food;
 
 import java.util.List;
 
