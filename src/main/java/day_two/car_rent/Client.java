@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Setter
@@ -25,12 +26,21 @@ public class Client {
         rentedCars.remove(car);
     }
 
-    public void rentCar(CarRent carRent, Brands brand, String model) {
+    public void rentCar(CarRent carRent,
+                        Brands brand,
+                        String model) {
         carRent.lendCar(brand, model, this);
     }
 
-    public void returnCar(CarRent carRent, Car car){
-        if (rentedCars.contains(car)){
+    public void reserveCar(CarRent carRent,
+                           Car car,
+                           Date since,
+                           Date to) {
+        carRent.reserveCar(car, this, since, to);
+    }
+
+    public void returnCar(CarRent carRent, Car car) {
+        if (rentedCars.contains(car)) {
             carRent.acceptCarBack(car);
         }
     }
