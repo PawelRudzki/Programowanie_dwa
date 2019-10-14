@@ -10,7 +10,9 @@ import java.util.*;
 public class CarRent {
 
     private List<Car> carPool;
+    private List<Reservation> reservationsList;
     private Map<Car, Client> rentedCars = new HashMap<>();
+    private List<Client> clientsList;
 
     public Car lendCar(Brands brand, String model, Client client){
 
