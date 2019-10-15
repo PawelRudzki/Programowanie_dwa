@@ -11,14 +11,14 @@ import java.util.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarRent {
+class CarRent {
 
     private List<Car> carPool;
     private List<Reservation> reservationsList;
     private Map<Car, Client> rentedCars = new HashMap<>();
     private List<Client> clientsList;
 
-    public Car lendCar(Brands brand,
+    Car lendCar(Brands brand,
                        String model,
                        Client client) {
 
@@ -38,21 +38,31 @@ public class CarRent {
         return carToRent;
     }
 
-    public void reserveCar(Car car,
+    void reserveCar(Car car,
                            Client client,
                            Date since,
                            Date to) {
         Optional<Reservation> foundReservation = reservationsList.stream()
                 .filter(a -> a.getCar().equals(car))
-                .filter(a->
-                        a.getReservedSince().getTime() <= since.getTime() &&
-                        a.getReservedTo().getTime() >= to.getTime()
+                .filter(a ->
+                                (a.getReservedSince().getTime() <= since.getTime() &&
+                        a.getReservedTo().getTime() >= to.getTime()) ||
+
+                                (a.getReservedSince().getTime() > since.getTime() &&
+                        a.getReservedTo().getTime() >= to.getTime()) ||
+
+                                (a.getReservedSince().getTime() <= since.getTime() &&
+                        a.getReservedTo().getTime() < to.getTime())).findAny();
+
+        if (!foundReservation.isPresent()) {
+            reservationsList.add(new Reservation(since, to, car, client));
+        } else throw new IllegalStateException("Car already reserved for this period.");
 
 
     }
 
 
-    public void acceptCarBack(Car car) {
+    void acceptCarBack(Car car) {
         if (rentedCars.containsKey(car)) {
             rentedCars.get(car).removeCar(car);
             rentedCars.remove(car);
@@ -63,7 +73,7 @@ public class CarRent {
         }
     }
 
-    public CarRent(List<Car> carPool) {
+    CarRent(List<Car> carPool) {
         this.carPool = carPool;
         this.reservationsList = new ArrayList<>();
     }

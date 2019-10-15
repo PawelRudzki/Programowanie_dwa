@@ -99,7 +99,7 @@ public class ClientTest {
         client.returnCar(carRent, car);
 
         //then
-        assertTrue(client.getRentedCars().size()==0);
+        assertEquals(0, client.getRentedCars().size());
         assertTrue(carRent.getCarPool().contains(car));
         assertFalse(carRent.getRentedCars().containsKey(car));
         assertFalse(carRent.getRentedCars().containsValue(client));
@@ -132,7 +132,7 @@ public class ClientTest {
 
         //when
 
-        client.reserveCar(carRent, Brands.FIAT, "Punto", since, to);
+        client.reserveCar(carRent, car, since, to);
 
 
         //then
