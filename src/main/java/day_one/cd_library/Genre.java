@@ -1,10 +1,12 @@
 package day_one.cd_library;
 
-public enum Genre {
-    ROCK,
+public enum Genre implements Comparable<Genre> {
+    FOLCK,
+    INDIE,
     METAL,
     POP,
-    INDIE,
     PROGGRESIVE_ROCK,
-    FOLCK
+    ROCK
+
+
 }

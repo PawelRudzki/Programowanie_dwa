@@ -12,24 +12,26 @@ import static org.junit.Assert.*;
 
 public class LibraryTest {
 
-    Library library = new Library();
-
-    Musician musician1 = new Musician("Yes", "Jon", "Anderson");
-    Set<Musician> authors = new HashSet<>();
-
-    Set<Genre> genre = new HashSet<>();
-
-    Song song1 = new Song(authors, genre, "Roundabout", 510);
-    Song song2 = new Song(authors, genre, "Five percent for nothing",35);
-
-
-    Album fragile = new Album("Fragile", AlbumFormats.CD);
 
 
     @Test
     public void find() {
 
         //given
+
+        Library library = new Library();
+
+        Musician musician1 = new Musician("Yes", "Jon", "Anderson");
+        List<Musician> authors = new ArrayList<>();
+
+        List<Genre> genre = new ArrayList<>();
+
+        Song song1 = new Song(authors, genre, "Roundabout", 510);
+        Song song2 = new Song(authors, genre, "Five percent for nothing",35);
+
+
+        Album fragile = new Album("Fragile", AlbumFormats.CD);
+
         authors.add(musician1);
         genre.add(Genre.PROGGRESIVE_ROCK);
         fragile.addSong(song1);
@@ -50,11 +52,11 @@ public class LibraryTest {
 
         //given
         Musician musician1 = new Musician("Yes", "Jon", "Anderson");
-        Set<Musician> authors = new HashSet<>();
+        List<Musician> authors = new ArrayList<>();
         authors.add(musician1);
 
 
-        Set<Genre> genre = new HashSet<>();
+        List<Genre> genre = new ArrayList<>();
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         Song song1 = new Song(authors, genre, "Roundabout", 510);
@@ -62,10 +64,10 @@ public class LibraryTest {
 
 
         Musician musician2 = new Musician("Jethro Tull", "Ian", "Anderson");
-        Set<Musician> authors2 = new HashSet<>();
+        List<Musician> authors2 = new ArrayList<>();
         authors2.add(musician2);
 
-        Set<Genre> genre2 = new HashSet<>();
+        List<Genre> genre2 = new ArrayList<>();
         genre2.add(Genre.FOLCK);
         genre2.add(Genre.ROCK);
 
@@ -111,11 +113,11 @@ public class LibraryTest {
 
         //given
         Musician musician1 = new Musician("Yes", "Jon", "Anderson");
-        Set<Musician> authors = new HashSet<>();
+        List<Musician> authors = new ArrayList<>();
         authors.add(musician1);
 
 
-        Set<Genre> genre = new HashSet<>();
+        List<Genre> genre = new ArrayList<>();
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         Song song1 = new Song(authors, genre, "Roundabout", 510);
@@ -124,11 +126,11 @@ public class LibraryTest {
 
         Musician musician2 = new Musician("Jethro_Tull", "Ian", "Anderson");
         Musician musician3 = new Musician("Jethro_Tull", "Martin", "Barre");
-        Set<Musician> authors2 = new HashSet<>();
+        List<Musician> authors2 = new ArrayList<>();
         authors2.add(musician2);
         authors2.add(musician3);
 
-        Set<Genre> genre2 = new HashSet<>();
+        List<Genre> genre2 = new ArrayList<>();
         genre2.add(Genre.FOLCK);
         genre2.add(Genre.ROCK);
 
@@ -160,15 +162,12 @@ public class LibraryTest {
 
         //then
 
-        assertEquals("---\n" +
-                "Fragile\n" +
-                "CD\n" +
-                "[Yes Jon Anderson]%Roundabout%510%[PROGGRESIVE_ROCK]\n" +
-                "[Yes Jon Anderson]%Five percent for nothing%35%[PROGGRESIVE_ROCK]\n" +
-                "---\n" +
-                "Aqualung\n" +
-                "CD\n" +
-                "[Jethro Tull Ian Anderson]%Aqualung%240%[FOLCK, ROCK]\n",tmp);
+        assertEquals("\n"+"Fragile [PROGGRESIVE_ROCK] CD [Yes Jon Anderson]\n" +
+                "[Yes Jon Anderson] \"Roundabout\" 8.5 min [PROGGRESIVE_ROCK]\n" +
+                "[Yes Jon Anderson] \"Five percent for nothing\" 0.5833333333333334 min [PROGGRESIVE_ROCK]\n" +
+                "\n" +
+                "Aqualung [FOLCK, ROCK] CD [Jethro Tull Ian Anderson]\n" +
+                "[Jethro Tull Ian Anderson] \"Aqualung\" 4.0 min [FOLCK, ROCK]"+"\n",tmp);
 
 
     }
@@ -180,11 +179,11 @@ public class LibraryTest {
 
         //given
         Musician musician1 = new Musician("Yes", "Jon", "Anderson");
-        Set<Musician> authors = new HashSet<>();
+        List<Musician> authors = new ArrayList<>();
         authors.add(musician1);
 
 
-        Set<Genre> genre = new HashSet<>();
+        List<Genre> genre = new ArrayList<>();
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         Song song1 = new Song(authors, genre, "Roundabout", 510);
@@ -193,11 +192,11 @@ public class LibraryTest {
 
         Musician musician2 = new Musician("Jethro_Tull", "Ian", "Anderson");
         Musician musician3 = new Musician("Jethro_Tull", "Martin", "Barre");
-        Set<Musician> authors2 = new HashSet<>();
+        List<Musician> authors2 = new ArrayList<>();
         authors2.add(musician2);
         authors2.add(musician3);
 
-        Set<Genre> genre2 = new HashSet<>();
+        List<Genre> genre2 = new ArrayList<>();
         genre2.add(Genre.FOLCK);
         genre2.add(Genre.ROCK);
 

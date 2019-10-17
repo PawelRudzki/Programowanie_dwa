@@ -100,7 +100,7 @@ public class Library {
 
                 String tabOfAuthors[] = tabOfSong[0].split("#");
 
-                Set<Musician> musicansSet = new HashSet<>();
+                List<Musician> musicansSet = new ArrayList<>();
                 for (int i = tabOfAuthors.length - 2; i >= 0; i--) {
                     Scanner scan2 = new Scanner(tabOfAuthors[i]);
                     Musician tmpMusician = new Musician(scan2.next(), scan2.next(), scan2.next());
@@ -109,7 +109,7 @@ public class Library {
 
 
                 String tabOfGenres[] = tabOfSong[3].split("#");
-                Set<Genre> genresSet = new HashSet<>();
+                List<Genre> genresSet = new ArrayList<>();
                 for (int i = 0; i < tabOfGenres.length - 1; i++) {
                     Scanner scan2 = new Scanner(tabOfGenres[i]);
                     genresSet.add(Genre.valueOf(scan2.next()));

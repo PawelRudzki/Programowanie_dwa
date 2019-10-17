@@ -3,8 +3,7 @@ package cd_library;
 import day_one.cd_library.*;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -16,11 +15,11 @@ public class AlbumTest {
 
         //given
         Musician musician1 = new Musician("Yes", "Jon", "Anderson");
-        Set<Musician> authors = new HashSet<>();
+        List<Musician> authors = new ArrayList<>();
         authors.add(musician1);
 
 
-        Set<Genre> genre = new HashSet<>();
+        List<Genre> genre = new ArrayList<>();
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         int duration = 320;
@@ -40,11 +39,11 @@ public class AlbumTest {
 
         //given
         Musician musician1 = new Musician("Yes", "Jon", "Anderson");
-        Set<Musician> authors = new HashSet<>();
+        List<Musician> authors = new ArrayList<>();
         authors.add(musician1);
 
 
-        Set<Genre> genre = new HashSet<>();
+        List<Genre> genre = new ArrayList<>();
         genre.add(Genre.PROGGRESIVE_ROCK);
         int duration = 320;
         String name = "Roundabout";

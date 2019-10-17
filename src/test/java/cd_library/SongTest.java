@@ -5,7 +5,9 @@ import day_one.cd_library.Musician;
 import day_one.cd_library.Song;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -17,11 +19,11 @@ public class SongTest {
 
         //given
         Musician musician1 = new Musician("Yes", "Jon", "Anderson");
-        Set<Musician> authors = new HashSet<>();
+        List<Musician> authors = new ArrayList<>();
         authors.add(musician1);
 
 
-        Set<Genre> genre = new HashSet<>();
+        List<Genre> genre = new ArrayList<>();
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         int duration = 320;
