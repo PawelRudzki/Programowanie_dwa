@@ -40,14 +40,14 @@ public class Album {
 
 
     void albumUpdate() {
-        albumAuthors=null;
-        albumSongs.forEach(a -> albumAuthors.addAll(a.getAuthors()));
+        albumAuthors.removeAll(albumAuthors);
+        albumSongs.stream().forEach(a -> albumAuthors.addAll(a.getAuthors()));
 
-        albumGenre=null;
-        albumSongs.forEach(a -> albumGenre.addAll(a.getGenre()));
+        albumGenre.removeAll(albumGenre);
+        albumSongs.stream().forEach(a -> albumGenre.addAll(a.getGenre()));
 
         this.duration = 0;
-        albumSongs.forEach(a -> this.duration += a.getDuration());
+        albumSongs.stream().forEach(a -> this.duration += a.getDuration());
     }
 
     public Album(String name, AlbumFormats albumFormat) {
@@ -57,7 +57,7 @@ public class Album {
 
     public String toString() {
         List<String> listOfSongs = albumSongs.stream()
-                .map(Song::toString)
+                .map(a->a.toString())
                 .collect(Collectors.toList());
 
         return "\n"+albumName+ " " + albumGenre
