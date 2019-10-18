@@ -9,12 +9,18 @@ import java.util.stream.Collectors;
 
 public class Library {
 
-    List<Album> listOfAlbums = new LinkedList<>();
+    private List<Album> listOfAlbums = new LinkedList<>();
 
     public Album find(String albumName) {
-        return listOfAlbums.stream()
-                .filter(a -> a.getAlbumName()
-                        .equals(albumName))
+       System.out.println(listOfAlbums
+                .stream()
+                .filter(a -> a.getAlbumName().equals(albumName))
+                .findAny()
+                .orElse(null));
+
+        return listOfAlbums
+                .stream()
+                .filter(a -> a.getAlbumName().equals(albumName))
                 .findAny()
                 .orElse(null)
                 ;
@@ -30,7 +36,7 @@ public class Library {
 
     public String toString() {
         List<String> stringOfAlbums = listOfAlbums.stream()
-                .map(a -> a.toString())
+                .map(Album::toString)
                 .collect(Collectors.toList());
 
         return stringOfAlbums.stream().reduce("", (tmp, a) -> tmp += a);
@@ -48,12 +54,12 @@ public class Library {
             album.getAlbumSongs().forEach(song -> {
                 List<String> songAuthors = song.getAuthors()
                         .stream()
-                        .map(a -> a.toString())
+                        .map(Musician::toString)
                         .collect(Collectors.toList());
 
                 List<String> songGenres = song.getGenre()
                         .stream()
-                        .map(a -> a.toString())
+                        .map(Enum::toString)
                         .collect(Collectors.toList());
 
                 save.print(songAuthors.stream().reduce("", (tmp, a) -> tmp += a + "#"));
@@ -96,19 +102,25 @@ public class Library {
             }
 
             while (!tmp.equals("---")) {
-                String tabOfSong[] = tmp.split("%");
+                String[] tabOfSong = tmp.split("%");
 
-                String tabOfAuthors[] = tabOfSong[0].split("#");
+                String[] tabOfAuthors = tabOfSong[0].split("#");
 
-                List<Musician> musicansSet = new ArrayList<>();
+                List<Musician> musicianArrayList = new ArrayList<>();
                 for (int i = tabOfAuthors.length - 2; i >= 0; i--) {
                     Scanner scan2 = new Scanner(tabOfAuthors[i]);
                     Musician tmpMusician = new Musician(scan2.next(), scan2.next(), scan2.next());
-                    musicansSet.add(tmpMusician);
+                    if (musicianArrayList
+                            .stream()
+                            .filter(a -> a.compareTo(tmpMusician) == 0)
+                            .findAny()
+                            .orElse(null) == null) {
+                        musicianArrayList.add(tmpMusician);
+                    }
                 }
 
 
-                String tabOfGenres[] = tabOfSong[3].split("#");
+                String[] tabOfGenres = tabOfSong[3].split("#");
                 List<Genre> genresSet = new ArrayList<>();
                 for (int i = 0; i < tabOfGenres.length - 1; i++) {
                     Scanner scan2 = new Scanner(tabOfGenres[i]);
@@ -116,7 +128,7 @@ public class Library {
                 }
 
                 library.listOfAlbums.get(counter)
-                        .addSong(new Song(musicansSet,
+                        .addSong(new Song(musicianArrayList,
                                 genresSet,
                                 tabOfSong[1],
                                 Integer.valueOf(tabOfSong[2])));

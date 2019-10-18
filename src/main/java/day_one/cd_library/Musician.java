@@ -17,10 +17,12 @@ public class Musician implements Comparable<Musician> {
     public int compareTo(Musician musician) {
         if (!this.band.equals(musician.band)) {
             return this.band.compareTo(musician.band);
-        } else {
+        } else if (!this.lastName.equals(musician.lastName)) {
             return this.lastName.compareTo(musician.lastName);
+        } else {
+            return this.name.compareTo(musician.name);
         }
 
-}
+    }
 
 }

@@ -13,7 +13,6 @@ import static org.junit.Assert.*;
 public class LibraryTest {
 
 
-
     @Test
     public void find() {
 
@@ -27,7 +26,7 @@ public class LibraryTest {
         List<Genre> genre = new ArrayList<>();
 
         Song song1 = new Song(authors, genre, "Roundabout", 510);
-        Song song2 = new Song(authors, genre, "Five percent for nothing",35);
+        Song song2 = new Song(authors, genre, "Five percent for nothing", 35);
 
 
         Album fragile = new Album("Fragile", AlbumFormats.CD);
@@ -38,22 +37,22 @@ public class LibraryTest {
         fragile.addSong(song2);
 
         //when
-        Album foundAlbum = library.find("Fragile");
+
+        library.addAlbum(fragile);
 
         //then
-        assertEquals(fragile.getAlbumName(), foundAlbum.getAlbumName());
-
+        assertEquals("Fragile", library.find("Fragile").getAlbumName());
 
 
     }
 
     @Test
-    public void toStringTest(){
+    public void toStringTest() {
 
         //given
         Musician musician1 = new Musician("Yes", "Jon", "Anderson");
         List<Musician> authors = new ArrayList<>();
-        
+
         authors.add(musician1);
 
 
@@ -61,7 +60,7 @@ public class LibraryTest {
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         Song song1 = new Song(authors, genre, "Roundabout", 510);
-        Song song2 = new Song(authors, genre, "Five percent for nothing",35);
+        Song song2 = new Song(authors, genre, "Five percent for nothing", 35);
 
 
         Musician musician2 = new Musician("Jethro Tull", "Ian", "Anderson");
@@ -72,7 +71,7 @@ public class LibraryTest {
         genre2.add(Genre.FOLCK);
         genre2.add(Genre.ROCK);
 
-        Song song3 = new Song(authors2, genre2, "Aqualung",240);
+        Song song3 = new Song(authors2, genre2, "Aqualung", 240);
 
 
         Album fragile = new Album("Fragile", AlbumFormats.CD);
@@ -91,12 +90,12 @@ public class LibraryTest {
 
         //then
 
-        assertEquals("\n"+"Fragile [PROGGRESIVE_ROCK] CD [Yes Jon Anderson]\n" +
+        assertEquals("\n" + "Fragile [PROGGRESIVE_ROCK] CD [Yes Jon Anderson]\n" +
                 "[Yes Jon Anderson] \"Roundabout\" 8.5 min [PROGGRESIVE_ROCK]\n" +
                 "[Yes Jon Anderson] \"Five percent for nothing\" 0.5833333333333334 min [PROGGRESIVE_ROCK]\n" +
                 "\n" +
                 "Aqualung [FOLCK, ROCK] CD [Jethro Tull Ian Anderson]\n" +
-                "[Jethro Tull Ian Anderson] \"Aqualung\" 4.0 min [FOLCK, ROCK]"+"\n", library.toString());
+                "[Jethro Tull Ian Anderson] \"Aqualung\" 4.0 min [FOLCK, ROCK]" + "\n", library.toString());
 
     }
 
@@ -122,7 +121,7 @@ public class LibraryTest {
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         Song song1 = new Song(authors, genre, "Roundabout", 510);
-        Song song2 = new Song(authors, genre, "Five percent for nothing",35);
+        Song song2 = new Song(authors, genre, "Five percent for nothing", 35);
 
 
         Musician musician2 = new Musician("Jethro_Tull", "Ian", "Anderson");
@@ -135,7 +134,7 @@ public class LibraryTest {
         genre2.add(Genre.FOLCK);
         genre2.add(Genre.ROCK);
 
-        Song song3 = new Song(authors2, genre2, "Aqualung",240);
+        Song song3 = new Song(authors2, genre2, "Aqualung", 240);
 
 
         Album fragile = new Album("Fragile", AlbumFormats.CD);
@@ -157,25 +156,28 @@ public class LibraryTest {
 
         String tmp = "";
         while (scan.hasNext()) {
-            tmp += scan.nextLine()+"\n";
+            tmp += scan.nextLine() + "\n";
         }
 
 
         //then
 
-        assertEquals("\n"+"Fragile [PROGGRESIVE_ROCK] CD [Yes Jon Anderson]\n" +
-                "[Yes Jon Anderson] \"Roundabout\" 8.5 min [PROGGRESIVE_ROCK]\n" +
-                "[Yes Jon Anderson] \"Five percent for nothing\" 0.5833333333333334 min [PROGGRESIVE_ROCK]\n" +
-                "\n" +
-                "Aqualung [FOLCK, ROCK] CD [Jethro Tull Ian Anderson]\n" +
-                "[Jethro Tull Ian Anderson] \"Aqualung\" 4.0 min [FOLCK, ROCK]"+"\n",tmp);
+        assertEquals("---\n" +
+                "Fragile\n" +
+                "CD\n" +
+                "Yes Jon Anderson#terminator%Roundabout%510%PROGGRESIVE_ROCK#terminator\n" +
+                "Yes Jon Anderson#terminator%Five percent for nothing%35%PROGGRESIVE_ROCK#terminator\n" +
+                "---\n" +
+                "Aqualung\n" +
+                "CD\n" +
+                "Jethro_Tull Ian Anderson#Jethro_Tull Martin Barre#terminator%Aqualung%240%FOLCK#ROCK#terminator\n",
+                tmp);
 
 
     }
 
     @Test
     public void load() throws FileNotFoundException {
-
 
 
         //given
@@ -188,7 +190,7 @@ public class LibraryTest {
         genre.add(Genre.PROGGRESIVE_ROCK);
 
         Song song1 = new Song(authors, genre, "Roundabout", 510);
-        Song song2 = new Song(authors, genre, "Five percent for nothing",35);
+        Song song2 = new Song(authors, genre, "Five percent for nothing", 35);
 
 
         Musician musician2 = new Musician("Jethro_Tull", "Ian", "Anderson");
@@ -201,7 +203,7 @@ public class LibraryTest {
         genre2.add(Genre.FOLCK);
         genre2.add(Genre.ROCK);
 
-        Song song3 = new Song(authors2, genre2, "Aqualung",240);
+        Song song3 = new Song(authors2, genre2, "Aqualung", 240);
 
 
         Album fragile = new Album("Fragile", AlbumFormats.CD);
@@ -227,8 +229,6 @@ public class LibraryTest {
         //then
 //        assertEquals(library.find("Fragile").toString(), loadedLibrary.find("Fragile").toString());
         assertEquals(library.toString(), loadedLibrary.toString());
-
-
 
 
     }

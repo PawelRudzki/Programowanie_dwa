@@ -3,10 +3,7 @@ package day_one.cd_library;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Setter
@@ -16,9 +13,9 @@ public class Album {
 
     private AlbumFormats albumFormat;
     private String albumName;
-    private List<Song> albumSongs = new LinkedList<Song>();
-    private Set<Musician> albumAuthors = new HashSet<>();
-    private Set<Genre> albumGenre = new HashSet<>();
+    private List<Song> albumSongs = new LinkedList<>();
+    private Set<Musician> albumAuthors = new TreeSet<>();
+    private Set<Genre> albumGenre = new TreeSet<>();
     private int duration;
 
     public void addSong(Song song) {
@@ -34,22 +31,23 @@ public class Album {
     }
 
     public Song find(String name) {
-        return albumSongs.stream().
-                filter(a -> a.getTitle().
-                        equals(name)).findAny().
-                orElse(null);
+        return albumSongs
+                .stream()
+                .filter(a -> a.getTitle().equals(name))
+                .findAny()
+                .orElse(null);
     }
 
 
-    public void albumUpdate() {
-        albumAuthors.removeAll(albumAuthors);
-        albumSongs.stream().forEach(a -> albumAuthors.addAll(a.getAuthors()));
+    void albumUpdate() {
+        albumAuthors=null;
+        albumSongs.forEach(a -> albumAuthors.addAll(a.getAuthors()));
 
-        albumGenre.removeAll(albumGenre);
-        albumSongs.stream().forEach(a -> albumGenre.addAll(a.getGenre()));
+        albumGenre=null;
+        albumSongs.forEach(a -> albumGenre.addAll(a.getGenre()));
 
         this.duration = 0;
-        albumSongs.stream().forEach(a -> this.duration += a.getDuration());
+        albumSongs.forEach(a -> this.duration += a.getDuration());
     }
 
     public Album(String name, AlbumFormats albumFormat) {
@@ -59,8 +57,9 @@ public class Album {
 
     public String toString() {
         List<String> listOfSongs = albumSongs.stream()
-                .map(a->a.toString())
+                .map(Song::toString)
                 .collect(Collectors.toList());
+
         return "\n"+albumName+ " " + albumGenre
                 + " " +albumFormat
                 + " " +albumAuthors
