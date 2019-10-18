@@ -47,6 +47,8 @@ public class Factorial {
 //        for (char digit : listOfChars) {
 //            result += Character.getNumericValue(digit);
 //        }
+
+
         
         return number
                 .chars()
