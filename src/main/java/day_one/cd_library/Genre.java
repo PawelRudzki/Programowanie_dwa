@@ -8,5 +8,4 @@ public enum Genre implements Comparable<Genre> {
     PROGGRESIVE_ROCK,
     ROCK
 
-
 }

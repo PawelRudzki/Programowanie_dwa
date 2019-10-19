@@ -18,9 +18,9 @@ public class LeksykoSort {
                 "kot"
         );
 
+        // sortujemy według długości binarnej
         Collections.sort(list);
 
-        //sortujemy według długości binarnej
 
         System.out.println(Arrays.toString(list.toArray()));
     }
