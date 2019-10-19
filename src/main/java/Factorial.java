@@ -37,17 +37,17 @@ public class Factorial {
 
     static int returnSumOfDigitsInNumber(String number) {
 
-        List<Character> listOfChars = number
-                .chars()
-                .mapToObj(a -> (char) a)
-                .collect(Collectors.toList());
+//        List<Character> listOfChars = number
+//                .chars()
+//                .mapToObj(a -> (char) a)
+//                .collect(Collectors.toList());
 
 //        ALTERNATYWNE ROZWIĄZANIE
 //        int result = 0;
 //        for (char digit : listOfChars) {
 //            result += Character.getNumericValue(digit);
 //        }
-        
+
         return number
                 .chars()
                 .reduce(0, (subtotal, element)->
