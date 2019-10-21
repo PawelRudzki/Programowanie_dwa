@@ -48,7 +48,4 @@ public class MyStreamWriter {
         streamWriter.close();
     }
 
-    public MyStreamWriter() throws FileNotFoundException, XMLStreamException {
-    }
-
 }

@@ -32,7 +32,7 @@ public class MyHandlerTest {
 
         //then
         assertNotNull(accountList.get(0));
-        assertEquals(3, accountList.size());
+        assertEquals(7, accountList.size());
 
     }
 
@@ -58,6 +58,6 @@ public class MyHandlerTest {
 
         //then
         assertNotNull(accountList.get(0));
-        assertEquals(3, accountList.size());
+        assertEquals(7, accountList.size());
     }
 }
