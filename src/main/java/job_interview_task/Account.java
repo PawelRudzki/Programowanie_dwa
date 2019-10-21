@@ -1,4 +1,4 @@
-package sax;
+package job_interview_task;
 
 import lombok.Getter;
 import lombok.Setter;

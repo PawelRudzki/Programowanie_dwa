@@ -1,4 +1,4 @@
-package sax;
+package job_interview_task;
 
 import org.junit.Test;
 import org.xml.sax.SAXException;
@@ -6,10 +6,10 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.stream.XMLStreamException;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 
 import java.util.List;
 
@@ -37,17 +37,19 @@ public class MyHandlerTest {
     }
 
     @Test
-    public void myHandlerTaskTest() throws ParseException, ParserConfigurationException,
-            SAXException, IOException {
+    public void myHandlerTaskTest() throws ParserConfigurationException,
+            SAXException, IOException, XMLStreamException {
 
         //given
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
         MyHandler myHandler = new MyHandler();
         saxParser.parse(new File("InterviewTask.xml"), myHandler);
+        MyStreamWriter myWriter = new MyStreamWriter();
 
         //when
         List<Account> accountList = myHandler.getAccountList();
+        myWriter.write(accountList);
 
         //display list, to be sure what it contains
         for (Account account : accountList) {
